@@ -14,7 +14,8 @@ class EstudianteController extends Controller
     public function index(): View
     {
         //
-        return view('estudiantes.index');
+        $estudiantes = Estudiante::cursorPaginate(7);
+        return view('estudiantes.index', compact('estudiantes'));
     }
 
     /**

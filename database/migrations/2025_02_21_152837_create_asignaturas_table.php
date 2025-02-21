@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\EstudianteController;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Estudiante;
 
 return new class extends Migration
 {
@@ -13,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('asignaturas', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Estudiante::class)->constrained()->cascadeOnDelete();
+            $table->string('nombre');
             $table->timestamps();
         });
     }
